@@ -1,15 +1,16 @@
-def main():
-    with open("books/frankenstein.txt") as f:
+def get_book():
+    file_path = "books/frankenstein.txt"
+    with open(file_path) as f:
         file_contents = f.read()
     return file_contents
 
 def wordcount():
-    whole = f"{main()}"
+    whole = f"{get_book()}"
     words = whole.split()
     return len(words)
 
 def charactercount():
-    whole = f"{main()}"
+    whole = f"{get_book()}"
     characters = {}
     for character in whole:
         lowcharacter = character.lower()
@@ -19,7 +20,8 @@ def charactercount():
             characters[lowcharacter] += 1
     return characters
 
-def printreport():
+def main():
+   # sorting the dictionary of letters into a list of letters in order of most found to least
     a_list = []
     a_dict = charactercount()
     for character in a_dict:
@@ -32,11 +34,11 @@ def printreport():
     
     print(f"GREATEST REPORT ON THE BOOK: FRANKENSTEIN")
     print(f"The whole book was written in {wordcount()} words.")
-    print(" ")
+    print()
     for item in a_list:
         print(f"The '{item["character"]}' character was found {item["num"]} times")
     print("FINALLY FINISHED THIS TOOK ME 3 HOURS")
 
     
 
-printreport()
+main()
